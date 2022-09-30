@@ -1,0 +1,108 @@
+.red-color{
+    color: green;
+}
+.white-color{
+    
+    color: black;
+}
+.black_color{
+    color: cornsilk;
+}
+.chair-class{
+    display: flex;
+    justify-content: center;
+    font-size: 42px;
+}
+.section1{
+    display: flex;
+    justify-content: center;
+    height: 130px;
+}
+.seatInfo{
+    padding: 40px;
+    
+}
+.section2{
+    padding-left: 26%;
+  
+}
+button{
+    margin: 4px;
+    font-size: 30px;
+    padding: 9px;
+    color: wheat;
+    background-color : whitesmoke;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+}
+.number-class{
+    padding: 2px 66px;
+}
+
+.addMirrorClass{
+    border: 15px solid honeydew;
+    width: 48%;
+    margin: 3% 25%;
+    border-radius: 14px;
+}
+
+.right-panel{
+    border: 1px solid black;
+    width: 55%;
+    padding: 1px 0px;
+    background-color: teal;
+
+}
+.left-panel{
+    border: 1px solid black;
+    width: 45%;
+    background-color: deepskyblue
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+#section1{
+    justify-content: center;
+}
+input{
+    width: 50%;
+    padding: 12px;
+}
+#inputClass{
+    width: 55%;
+    padding: 12px;
+}
+.submitButtonClass{
+    width: 55%;
+    padding: 12px;
+}
+
+label{
+    font-size: 19px;
+}
+h2{
+    text-align: center;
+    padding: 18px;
+    margin: 26px;
+    font-size: xx-large;
+}
+form{
+    text-align: center;
+    background-color: lightskyblue;
+}
+.book-button{
+    margin: 4% 38%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

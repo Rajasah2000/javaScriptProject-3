@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-panel">
+                <div id="section1">
+                    <h2>User Details</h2>
+                    <div id="userDetails">
+                        <p id="person-name"></p>
+                        <p id="movie-name"></p>
+                        <p id="age"></p>
+                        <p id="mobile-number"></p>
+                        <p id="booked-ticket"></p>
+                    </div>
+                    <form name="contact_form" id="kaka" onsubmit = "return(validate(event));">
+                        <label>Name:</label><br>
+                        <input type="text" name="name" ><br><br><br>
+                        <label>Choose Movie Name:</label><br>
+                        <select name="movie" id="inputClass">
+                            <option value = "0" selected>[choose yours movie Name]</option>
+                            <option >Baahubali 2</option>
+                            <option >KGF Chapter 2</option>
+                            <option >Dangal</option>
+                            <option >RRR</option>
+                        </select> <br> <br>
+                        <label>D.O.B (mm-yyyy):</label><br>
+                        <input type="month" name="age" ><br><br><br>
+
+                        <label>Mobile Number:</label><br>
+                        <input type="text" name="mobileNumber" maxlength="10" onkeypress="getMobileNumber(event)" > <br><br><br>
+                
+                        <input type="submit" name="send" value="Send Details" class="submitButtonClass" >
+                    </form>
+                </div>
+            
+            </div>
+    
+
+            <div class="right-panel">
+                <h2>Ticket</h2>
+                <div class="section1">
+                    <div class="seatInfo">
+                        <span class="material-icons black_color chair-class">chair</span>
+                        <h3>Available</h3>
+                    </div>
+          
+                    <div class="seatInfo">
+                        <span class="material-icons white-color chair-class" >chair</span>
+                        <h3>Booked</h3>
+                    </div>
+  
+                    <div class="seatInfo">
+                        <span class="material-icons red-color chair-class">chair</span>
+                        <h3>Selected</h3>
+                    </div>
+
+                </div>
+                <div class="addMirrorClass"></div>
+                <div class="section2">
+                    <button class="material-icons ">chair</button>
+                    <button class="material-icons " >chair</button>
+                    <button class="material-icons ">chair</button>
+                    <button class="material-icons " id="icon" > chair</button>
+                    <button class="material-icons ">chair</button>
+                    <button class="material-icons ">chair</button>
+                    <br><br>
+                    
+                    <button class="material-icons ">chair</button>
+                    <button class="material-icons ">chair</button>
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons" id="icon" >chair</button>
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons">chair</button>
+                    <br><br>
+                  
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons" id="icon">chair</button>
+                    <button class="material-icons">chair</button>
+                    <button class="material-icons">chair</button>
+                    <div class="seatDetails">
+                        <span id="bookedSeats"></span>
+                        <span id="availableSeats"></span>
+                        <span id="totalSeats"></span>
+                    </div>
+
+                </div>
+                <button class="book-button"   onclick="onTicketBook()">Book Button</button>
+            </div>
+
+        </div>
+        <script src="./script.js"></script>
+    </body>
+
+</html>
