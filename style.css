@@ -6,7 +6,7 @@
     color: black;
 }
 .black_color{
-    color: cornsilk;
+    color: wheat;
 }
 .chair-class{
     display: flex;
@@ -44,7 +44,7 @@ button{
 
 .addMirrorClass{
     border: 15px solid honeydew;
-    width: 48%;
+    width: 44%;
     margin: 3% 25%;
     border-radius: 14px;
 }

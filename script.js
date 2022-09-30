@@ -17,6 +17,13 @@ const getMobileNumber=(event)=>{
         event.preventDefault();
     }
 }
+const getYourName=(event)=> {
+      var regex = /^[a-zA-Z ]*$/;
+      if(!(event.key.match(regex)))
+      {
+        event.preventDefault();
+      }
+}
 const validate=(event)=>{
     event.preventDefault();
     const  age =document.contact_form.age.value;

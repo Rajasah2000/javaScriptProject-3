@@ -20,9 +20,9 @@
                         <p id="mobile-number"></p>
                         <p id="booked-ticket"></p>
                     </div>
-                    <form name="contact_form" id="kaka" onsubmit = "return(validate(event));">
+                    <form name="contact_form"  onsubmit = "return(validate(event));">
                         <label>Name:</label><br>
-                        <input type="text" name="name" ><br><br><br>
+                        <input type="text" name="name" onkeypress="getYourName(event)"><br><br><br>
                         <label>Choose Movie Name:</label><br>
                         <select name="movie" id="inputClass">
                             <option value = "0" selected>[choose yours movie Name]</option>
