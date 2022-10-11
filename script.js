@@ -1,130 +1,166 @@
-const storeButtonElement = document.querySelectorAll('button');
 
-let personName = document.getElementById("person-name");
-let movieName = document.getElementById("movie-name");
-let ages = document.getElementById("age");
-let mobileNumber = document.getElementById("mobile-number");
-let bookedTicket = document.getElementById('booked-ticket');
+const select = document.getElementById("select");
+const personDetails = document.getElementById("personName");
+const movieDetails = document.getElementById("movieName");
+const contact_number = document.getElementById("mobileNumber");
+const email = document.getElementById("email");
+const form = document.userDetailsForm;
+const bookedTicket = document.getElementById('bookedTicket');
+const movieList = ["Bahubali 2","KGF Chapter 2","Dangal","RRR","KK"];
 let count=0;
+let allButtons;                   // variable to store all seat 
+movieList.map((element)=>{
+   let option = document.createElement("option"),
+    txt = document.createTextNode(element);
+    option.appendChild(txt);
+    option.setAttribute("value",element);
+    select.insertBefore(option,select.lastChild);
+})   
 
-storeButtonElement.forEach((ele)=>{
-    ele.disabled=true;
-    ele.style.cursor="not-allowed";
-})
-
-const getMobileNumber=(event)=>{
+/**
+ * validation on userContactNumber.
+ * @param {*} event 
+ */
+const getContactNumber=(event)=>{      
     if(!(event.charCode >=48 && event.charCode <= 57)){
         event.preventDefault();
     }
 }
-const getYourName=(event)=> {
+/**
+ * validation on userName.
+ * @param {*} event 
+ */
+const getUserName=(event)=> {               
       var regex = /^[a-zA-Z ]*$/;
       if(!(event.key.match(regex)))
       {
         event.preventDefault();
       }
 }
-const validate=(event)=>{
+/**
+ * To validate user details.
+ * @param {*} event 
+ * @returns 
+ */
+const validate=(event)=>{          
     event.preventDefault();
-    const  age =document.contact_form.age.value;
-    const  mobileNumber = document.contact_form.mobileNumber.value;
-    let year = age.slice(0, 4);
-    if(2022-parseInt(year)<12){
-         alert('age should be atleast be 12');
-         document.contact_form.age.focus();
-         return false;
-    }
-    
-    if( document.contact_form.name.value == "" ) {
+    const  contact_number = form.contact_number.value;
+    const dateOfBirth = document.getElementById("DOB").value; 
+    const todayDate = new Date();
+    const DOB = new Date(dateOfBirth);
+
+    const age = todayDate.getFullYear() - DOB.getFullYear();
+    const ageMonth = todayDate.getMonth() - DOB.getMonth();
+    const ageDay = todayDate.getDate() - DOB.getDate();
+    if( form.name.value.trim().length == 0 ) {
         alert( "Please provide your name!" );
-        document.contact_form.name.focus() ;
+        form.name.focus() ;
         return false;
      }
-     if( document.contact_form.movie.value == "0" ) {
+     if(form.movie.value == "default"){
         alert( "Please provide Movie Name!" );
-        document.contact_form.movie.focus() ;
+        form.movie.focus() ;
         return false;
      }
-     
-     if(age == ''){
+     if ((age == 12 && ageMonth <= 0 && ageDay <= 0) || age < 12) {
+         alert("Age should be more than 12 years.Please enter a valid Date of Birth");
+         form.age.focus();
+         return false;
+     }
+     if(dateOfBirth.length == 0){
         alert('please provide your D.O.B');
-        document.contact_form.age.focus();
+        form.age.focus();
         return false
      }
-
-     if( document.contact_form.mobileNumber.value == "" ) {
-        alert( "Please provide your mobile  number! " );
-        document.contact_form.mobileNumber.focus() ;
-        return false;
+     if(form.contact_number.value.length == 0 && form.email.value.length == 0 ){
+        alert("Enter either mobile number or email");
+        return false
      }
-     if(mobileNumber.length <= 9){
-        alert("please provide valid mobile number");
-        document.contact_form.mobileNumber.focus() ;
-        return false;
+     if(form.contact_number.value.length != 0){
+        if(contact_number.length <= 9){
+            alert("please provide valid mobile number");
+            form.contact_number.focus() ;
+            return false;
+         }
      }
-
-    storeButtonElement.forEach((ele,i)=>{
-        if(i<=storeButtonElement.length-2){
-            ele.disabled=false;
-            ele.style.cursor ="pointer";
+     if(form.email.value.length != 0){
+        const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(form.email.value.length != 0){
+            if(!form.email.value.match(regex))
+            {
+            alert("You have entered an invalid email address!");
+            form.email.focus();
+            return false;
+            }
+        }
+     }
+    getAllButtons(18);
+    const btnAll = document.querySelectorAll('button');
+    allButtons = btnAll;
+    btnAll.forEach((element,index)=>{
+        if(index<btnAll.length-1){
+            element.addEventListener("click",() =>{
+                if(element.style.color === "wheat"){
+                    element.style.color = "green"
+                    count++
+                }else{
+                    element.style.color = "wheat"
+                    count--;
+                }
+                document.getElementById('bookedSeats').innerHTML = "Booked Seat : "+ count + ",";
+                document.getElementById('availableSeats').innerHTML = "Available Seat : "+ (allButtons.length-1-count)+","
+                document.getElementById('totalSeats').innerHTML = "Total Seat : "+ (allButtons.length-1);
+                btnAll.forEach((element,index)=>{
+                if(index == btnAll.length-1){
+                    element.disabled=false;
+                    element.style.cursor="pointer";
+                }
+            })
+            })
+        }
+    })
+    btnAll.forEach((element,index)=>{
+        if(index == btnAll.length-1){
+            element.disabled=true;
+            element.style.cursor ="not-allowed";
         }
     });
-     return true;
-}
-
-
-
-const onTicketBook=()=>{
-    let age =document.contact_form.age.value;
-    let year = age.slice(0, 4);
-    let userAge =2022-parseInt(year);
-    let data = document.querySelector('form');
-    let h2 = document.querySelector('h2');
-    
-    storeButtonElement.forEach((ele)=>{
-        if(ele.style.color == 'green'){
-            count++;
-        }
-    })
-  
-    personName.innerHTML = " Name  :       "+ document.contact_form.name.value
-    movieName.innerHTML = "Movie Name :       " + document.contact_form.movie.value
-    ages.innerHTML = "Age :     "+ userAge;
-    mobileNumber.innerHTML = "Mobile Number :       " + document.contact_form.mobileNumber.value;
-    bookedTicket.innerHTML = "No of ticket have booked :       " + count;
-
+    document.getElementById("submit").disabled = true;
     document.getElementById('bookedSeats').innerHTML = "Booked Seat : "+ count + ",";
-    document.getElementById('availableSeats').innerHTML = "Available Seat : "+ (storeButtonElement.length-1-count)+","
-    document.getElementById('totalSeats').innerHTML = "Total Seat : "+ (storeButtonElement.length-1);
-
-    storeButtonElement.forEach((ele)=>{
-        ele.disabled=true
-        ele.style.cursor="not-allowed"
-    })
-
-    data.replaceWith(h2);
-    document.getElementById('section1').style.display="flex"
-    document.getElementById('section1').style.flexDirection="column-reverse"
-    document.getElementById('userDetails').style.padding="14% 33%"     
+    document.getElementById('availableSeats').innerHTML = "Available Seat : "+ (allButtons.length-1-count)+","
+    document.getElementById('totalSeats').innerHTML = "Total Seat : "+ (allButtons.length-1);
+    return true;
 }
-
-
-storeButtonElement.forEach((ele,i)=>{
-    if(i<=storeButtonElement.length-2){
-        ele.addEventListener("click",(e) =>{
-            let backgroundColor = ele.style.color;
-            if(backgroundColor === "wheat"){
-                ele.style.color = "green"
-            }else{
-            ele.style.color = "wheat"
-            }
-
-        storeButtonElement.forEach((ele,i)=>{
-            if(i==storeButtonElement.length-1){
-                ele.disabled=false;
-                ele.style.cursor="pointer";
-            }
-        })
-        })
+/**
+ * to booked the seat.
+ */
+const onTicketBook=()=>{    
+    const data = document.querySelector('form');
+    const h2 = document.querySelector('h2');
+    personDetails.innerHTML = " Name  :"+ form.name.value
+    movieDetails.innerHTML = "Movie Name :" + form.movie.value
+    contact_number.innerHTML = "Mobile Number :" + form.contact_number.value;
+    email.innerHTML = "Email : "+ form.email.value;
+    bookedTicket.innerHTML = "No of ticket have booked :" + count;
+    allButtons.forEach((element)=>{
+        element.disabled=true;
+        element.style.cursor="not-allowed"
+    })
+    data.replaceWith(h2);
+    document.getElementById('userInformation').style.display="flex";
+    document.getElementById('userInformation').style.flexDirection="column-reverse";
+    document.getElementById('userDetails').style.padding="11% 39%";     
+}
+/**
+ * dynamically created multiple button/seat.
+ * @param {*} e 
+ */
+const getAllButtons=(e)=>{                        
+    for(let index = 0; index< e; index++){
+      const buttonElement = document.createElement('button');
+      buttonElement.innerText="chair";
+      buttonElement.className="material-icons";
+      buttonElement.setAttribute('style', 'color: wheat')
+      document.querySelector('#button-container').appendChild(buttonElement);
     }
-})
+}

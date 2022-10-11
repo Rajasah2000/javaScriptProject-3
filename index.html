@@ -11,42 +11,53 @@
     <body>
         <div class="container">
             <div class="left-panel">
-                <div id="section1">
+                <div id="userInformation">
                     <h2>User Details</h2>
                     <div id="userDetails">
-                        <p id="person-name"></p>
-                        <p id="movie-name"></p>
-                        <p id="age"></p>
-                        <p id="mobile-number"></p>
-                        <p id="booked-ticket"></p>
+                        <p id="personName"></p>
+                        <p id="movieName"></p>
+                        <p id="mobileNumber"></p>
+                        <p id="email"></p>
+                        <p id="bookedTicket"></p>
                     </div>
-                    <form name="contact_form"  onsubmit = "return(validate(event));">
-                        <label>Name:</label><br>
-                        <input type="text" name="name" onkeypress="getYourName(event)"><br><br><br>
+                    <form name="userDetailsForm"  onsubmit = "validate(event)">
+                        <div class="contact_details">
+                            <label>Name:</label><br>
+                            <input type="text" name="name" onkeypress="getUserName(event)"><br>
+                        </div>
+                        <div class="contact_details">
                         <label>Choose Movie Name:</label><br>
-                        <select name="movie" id="inputClass">
-                            <option value = "0" selected>[choose yours movie Name]</option>
-                            <option >Baahubali 2</option>
-                            <option >KGF Chapter 2</option>
-                            <option >Dangal</option>
-                            <option >RRR</option>
-                        </select> <br> <br>
-                        <label>D.O.B (mm-yyyy):</label><br>
-                        <input type="month" name="age" ><br><br><br>
+                            <select id="select" name="movie">
+                                <option value="default">Choose yours movie</option>
+                            </select>
+                        </div>
+                        <div class="contact_details">
+                            <label>D.O.B (dd-mm-yyyy):</label><br>
+                            <input type="date" name="age" id="DOB" > <br>
+                        </div>
+                        
+                        <div class="contact_details">
+                            <label>Mobile Number:</label><br>
+                        <input type="text" name="contact_number" maxlength="10" onkeypress="getContactNumber(event)" > <br>
+                        </div>
 
-                        <label>Mobile Number:</label><br>
-                        <input type="text" name="mobileNumber" maxlength="10" onkeypress="getMobileNumber(event)" > <br><br><br>
-                
-                        <input type="submit" name="send" value="Send Details" class="submitButtonClass" >
+                        <div class="contact_details">
+                            <label>Email:</label><br>
+                        <input type="text" name="email" > <br>
+                        </div>
+                        
+                        <div>
+                            <input type="submit"  id="submit" name="submit" value="Submit User Details" class="submitButtonClass" >
+                        </div>
+                        
                     </form>
                 </div>
             
             </div>
-    
 
             <div class="right-panel">
                 <h2>Ticket</h2>
-                <div class="section1">
+                <div class="seat-type">
                     <div class="seatInfo">
                         <span class="material-icons black_color chair-class">chair</span>
                         <h3>Available</h3>
@@ -61,38 +72,13 @@
                         <span class="material-icons red-color chair-class">chair</span>
                         <h3>Selected</h3>
                     </div>
-
                 </div>
                 <div class="addMirrorClass"></div>
-                <div class="section2">
-                    <button class="material-icons ">chair</button>
-                    <button class="material-icons " >chair</button>
-                    <button class="material-icons ">chair</button>
-                    <button class="material-icons " id="icon" > chair</button>
-                    <button class="material-icons ">chair</button>
-                    <button class="material-icons ">chair</button>
-                    <br><br>
-                    
-                    <button class="material-icons ">chair</button>
-                    <button class="material-icons ">chair</button>
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons" id="icon" >chair</button>
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons">chair</button>
-                    <br><br>
-                  
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons" id="icon">chair</button>
-                    <button class="material-icons">chair</button>
-                    <button class="material-icons">chair</button>
-                    <div class="seatDetails">
-                        <span id="bookedSeats"></span>
-                        <span id="availableSeats"></span>
-                        <span id="totalSeats"></span>
-                    </div>
-
+                <div class="seat-selection" id="button-container"></div>        
+                <div class="seatDetails">
+                    <span id="bookedSeats"></span>
+                    <span id="availableSeats"></span>
+                    <span id="totalSeats"></span>
                 </div>
                 <button class="book-button"   onclick="onTicketBook()">Book Button</button>
             </div>
