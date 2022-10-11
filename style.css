@@ -33,7 +33,7 @@ button{
     /* color: wheat; */
     background-color : whitesmoke;
 }
-.contact_details{
+.contactDetails{
     margin: 16px;
 }
 
@@ -57,12 +57,15 @@ button{
     width: 34%;
     padding: 1px 0px;
     background-color: teal;
+    border-radius: 99px;
 
 }
 .left-panel{
     border: 1px solid black;
     width: 69%;
-    background-color: deepskyblue
+    background-color: deepskyblue;
+    border-radius: 138px;
+    margin-left: 5px;
 
 }
 .container{
@@ -98,6 +101,7 @@ h2{
 form{
     text-align: center;
     background-color: lightskyblue;
+    border-radius: 138px;
 }
 .book-button{
     margin: 4% 38%;
@@ -112,7 +116,7 @@ form{
     border-radius: 23px;
 }
 .submitButtonClass{
-    margin: 51px;
+    margin: 26px;
 }
 .seatDetails{
     margin-left: 78px;

@@ -21,29 +21,29 @@
                         <p id="bookedTicket"></p>
                     </div>
                     <form name="userDetailsForm"  onsubmit = "validate(event)">
-                        <div class="contact_details">
+                        <div class="contactDetails">
                             <label>Name:</label><br>
-                            <input type="text" name="name" onkeypress="getUserName(event)"><br>
+                            <input type="text" name="name" id="name" onkeypress="getUserName(event)"><br>
                         </div>
-                        <div class="contact_details">
+                        <div class="contactDetails">
                         <label>Choose Movie Name:</label><br>
                             <select id="select" name="movie">
                                 <option value="default">Choose yours movie</option>
                             </select>
                         </div>
-                        <div class="contact_details">
+                        <div class="contactDetails">
                             <label>D.O.B (dd-mm-yyyy):</label><br>
                             <input type="date" name="age" id="DOB" > <br>
                         </div>
                         
-                        <div class="contact_details">
+                        <div class="contactDetails">
                             <label>Mobile Number:</label><br>
-                        <input type="text" name="contact_number" maxlength="10" onkeypress="getContactNumber(event)" > <br>
+                        <input type="text" name="contactNumber" id="contactNumber" maxlength="10" onkeypress="getContactNumber(event)" > <br>
                         </div>
 
-                        <div class="contact_details">
+                        <div class="contactDetails">
                             <label>Email:</label><br>
-                        <input type="text" name="email" > <br>
+                        <input type="text" id="emails" name="email" > <br>
                         </div>
                         
                         <div>
