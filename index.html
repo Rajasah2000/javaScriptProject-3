@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-panel">
+                <div id="userInformation">
+                    <h2>User Details</h2>
+                    <div id="userDetails">
+                        <p id="personName"></p>
+                        <p id="movieName"></p>
+                        <p id="mobileNumber"></p>
+                        <p id="email"></p>
+                        <p id="bookedTicket"></p>
+                    </div>
+                    <form name="userDetailsForm"  onsubmit = "validate(event)">
+                        <div class="contactDetails">
+                            <label>Name:</label><br>
+                            <input type="text" name="name" id="name" onkeypress="getUserName(event)"><br>
+                        </div>
+                        <div class="contactDetails">
+                        <label>Choose Movie Name:</label><br>
+                            <select id="select" name="movie">
+                                <option value="default">Choose yours movie</option>
+                            </select>
+                        </div>
+                        <div class="contactDetails">
+                            <label>D.O.B (dd-mm-yyyy):</label><br>
+                            <input type="date" name="age" id="DOB" > <br>
+                        </div>
+                        
+                        <div class="contactDetails">
+                            <label>Mobile Number:</label><br>
+                        <input type="text" name="contactNumber" id="contactNumber" maxlength="10" onkeypress="getContactNumber(event)" > <br>
+                        </div>
+
+                        <div class="contactDetails">
+                            <label>Email:</label><br>
+                        <input type="text" id="emails" name="email" > <br>
+                        </div>
+                        
+                        <div>
+                            <input type="submit"  id="submit" name="submit" value="Submit User Details" class="submitButtonClass" >
+                        </div>
+                        
+                    </form>
+                </div>
+            
+            </div>
+
+            <div class="right-panel">
+                <h2>Ticket</h2>
+                <div class="seat-type">
+                    <div class="seatInfo">
+                        <span class="material-icons black_color chair-class">chair</span>
+                        <h3>Available</h3>
+                    </div>
+          
+                    <div class="seatInfo">
+                        <span class="material-icons white-color chair-class" >chair</span>
+                        <h3>Booked</h3>
+                    </div>
+  
+                    <div class="seatInfo">
+                        <span class="material-icons red-color chair-class">chair</span>
+                        <h3>Selected</h3>
+                    </div>
+                </div>
+                <div class="addMirrorClass"></div>
+                <div class="seat-selection" id="button-container"></div>        
+                <div class="seatDetails">
+                    <span id="bookedSeats"></span>
+                    <span id="availableSeats"></span>
+                    <span id="totalSeats"></span>
+                </div>
+                <button class="book-button"   onclick="onTicketBook()">Book Button</button>
+            </div>
+
+        </div>
+        <script src="./script.js"></script>
+    </body>
+
+</html>
